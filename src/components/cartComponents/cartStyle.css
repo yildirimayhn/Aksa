@@ -1,0 +1,34 @@
+
+/* #region cart */
+.cart-button {
+    position: relative;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    height: 48px;
+    min-width: 120px;
+    background-color: #2e462d;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 120px;
+  }
+  .cart-count{
+    position: absolute;
+    top: -7px;
+    inset-inline-end: -5px;
+    background: #fff;
+    color: #2e462d;  
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.17);
+    border-radius: 50%;
+    min-width: 20px;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;   
+  }
+  
+  /* #endregion cart */
+  

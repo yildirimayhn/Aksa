@@ -1,0 +1,188 @@
+import CryptoJS from "crypto-js";
+
+export const EncryptedOrDecryptedJSFormat =(value, isEncrypted = true) =>{
+    const secretKey = process.env.CRYPTO_JS_SECRET_KEY; // Hem frontend hem backend aynı anahtarı kullanmalı
+
+    if (isEncrypted) {
+        // Şifrele
+        const plainText = JSON.stringify(value);
+        const encrypted = CryptoJS.AES.encrypt(plainText, secretKey).toString();
+        return encrypted;
+    } else {
+        const bytes = CryptoJS.AES.decrypt(value, secretKey);
+        const decrypted = bytes.toString(CryptoJS.enc.Utf8);
+        const parsed = JSON.parse(decrypted);
+        return parsed;
+    }
+    
+}
+
+export const formatPrice = (value) => {
+    // Sayı ve nokta dışındaki karakterleri temizle
+    let cleanValue = value.replace(/[^0-9.]/g, '');
+    
+    // Birden fazla noktayı engelle
+    const parts = cleanValue.split('.');
+    if (parts.length > 2) {
+        cleanValue = parts[0] + '.' + parts.slice(1).join('');
+    }
+    
+    // Kuruş kısmını 2 basamakla sınırla
+    if (parts.length === 2 && parts[1].length > 2) {
+        cleanValue = parts[0] + '.' + parts[1].substring(0, 2);
+    }
+
+    // Başındaki sıfırları temizle (0 ve 0. hariç)
+    if (cleanValue.length > 1 && cleanValue[0] === '0' && cleanValue[1] !== '.') {
+        cleanValue = cleanValue.replace(/^0+/, '');
+    }
+
+    return cleanValue;
+};
+
+export const formatCurrency = (value) => {
+    if (!value) return '';
+    // Sadece rakam ve nokta karakterlerini al
+    const numericValue = value.replace(/[^0-9.]/g, '');
+    // Noktadan sonra en fazla iki basamak olacak şekilde formatla
+    const parts = numericValue.split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Binlik ayracı ekle
+    return parts.join(',');
+};
+export const formatTL = (value) => {
+  if (!value) return '';
+  // Sadece rakam ve virgül/nokta kalsın
+  const numeric = value.toString().replace(/[^\d.,]/g, '').replace(',', '.');
+  const number = parseFloat(numeric);
+  if (isNaN(number)) return '';
+  return number.toLocaleString('tr-TR', { style: 'currency', currency: 'TRY', minimumFractionDigits: 2 });
+};
+
+export const formatStock = (value) => {
+    // Sayı dışındaki karakterleri temizle
+    const numericValue = value.replace(/[^0-9]/g, '');
+    
+    // Başındaki sıfırları temizle
+    const cleanValue = numericValue.replace(/^0+/, '') || '0';
+    
+    // Binlik ayracı ekle
+    return cleanValue.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+export const getPageIcon = (pageName) => {
+    switch (pageName) {
+        case 'products':
+            return <i class='fas fa-toolbox'></i>;
+        case 'categories':
+            return <i class='fa-solid fa-icons'></i>;
+        case 'users':
+            return <i class='fa-solid fa-users-line'></i>;
+        case 'orders':
+            return 'order';
+        case 'projects':
+            return <i class='fa-solid fa-list-check'></i>;
+        case 'references':
+            return <i class='fas fa-book'></i>;
+        case 'introductionBooklet':
+            return <i class="'fa-solid fa-pen-to-square'"></i>;        
+        case 'socialmediaList':
+           return <i class='fa-solid fa-share-nodes'></i>;       
+        case 'events':
+           return <i class="fa-solid fa-calendar-check"></i>;
+        default:
+            return '';
+    }
+}
+
+export const getPageTitleText = (pageName) => {
+    switch (pageName) {
+        case 'products':
+            return 'Ürünler';
+        case 'categories':
+            return 'Kategoriler';
+        case 'users':
+            return 'Kullanıcılar';
+        case 'orders':
+            return 'Siparişler';
+        case 'projects':
+            return 'Projeler';
+        case 'references':
+            return 'Referanslar';
+        case 'introductionBooklet':
+            return 'Tanıtım Kitapçığı';
+        case 'socialmediaList':
+            return 'Sosyal Medya Hesapları';
+        case 'events':
+            return 'Etkinlikler'            
+        default:
+            return '';
+    }
+}
+
+export const substringValue = (str, maxLength) => {
+    if (!str) return ;// Eğer str boşsa, boş string döndür
+    if (typeof str !== 'string') return str; // Eğer str string değilse, olduğu gibi döndür     
+    return str.length > maxLength ? str.substring(0, maxLength) + '...' : str;
+} 
+ 
+// // Telefon numarası formatlama fonksiyonu
+export const formatPhoneNumber = (value) => {
+    const digits = value.replace(/\D/g, '').substring(0, 11); // Türkçe GSM için 11 hane
+    if (digits.length < 4) return digits;
+    if (digits.length < 7) 
+        return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    if (digits.length < 10) 
+        return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)} ${digits.slice(6)}`;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)} ${digits.slice(6, 8)} ${digits.slice(8, 10)}`;
+}
+//enums
+export const categoryTypeEnum = {
+    PROJECT: 1,
+    USER: 2,
+    EVENT:3,
+    DISTANCE:4
+};
+
+export const serverUrl = 'http://localhost:5001';
+export const apiUrl = serverUrl + '/api';
+export const apiUrlPath= (apiName) =>{
+    return (apiUrl + '/' + apiName );
+}
+
+export const getFileUrl = (filePath) => {
+    if (!filePath) return null;
+    return `${serverUrl}/${filePath}`;
+}
+
+export const uploadPaths= () => {
+    return {
+        avatarsPath: serverUrl + 'uploads/avatars',
+        productsPath: serverUrl +'uploads/products',
+        projectsPath: serverUrl +'uploads/projects',
+        referencesPath: serverUrl +'uploads/references',
+        introductionBookletPath: serverUrl + 'uploads/introductionBooklet'
+    }
+}
+
+export const getSocialMedyaIcon = (name) => {
+  const searchValue = `${name}`.toLowerCase();
+  if (searchValue.includes('facebook')) return 'fa-facebook';
+  if (searchValue.includes('instagram')) return 'fa-instagram';
+  if (searchValue.includes('youtube')) return 'fa-youtube';
+  if (searchValue.includes('linkedin')) return 'fa-linkedin';
+  if (searchValue.includes('x-twitter') || searchValue.includes('twitter') || searchValue === 'x') return 'fa-x-twitter';
+  if (searchValue.includes('twitch')) return 'fa-twitch';
+  if (searchValue.includes('whatsapp')) return 'fa-whatsapp';
+  return '';
+};
+
+export const getSocialMediaBgColor=(name) =>{
+  const searchValue = `${name}`.toLowerCase();
+  if (searchValue.includes('facebook')) return '#365493';
+  if (searchValue.includes('instagram')) return '#ca860b';
+  if (searchValue.includes('youtube')) return '#CB2027';
+  if (searchValue.includes('linkedin')) return 'cadetblue';
+  if (searchValue.includes('x-twitter') || searchValue.includes('twitter') || searchValue === 'x') return 'black';
+  if (searchValue.includes('twitch')) return 'green';
+  if (searchValue.includes('whatsapp')) return '#1ebea5';
+}

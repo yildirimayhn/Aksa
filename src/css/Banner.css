@@ -1,0 +1,163 @@
+
+.banner {
+    background-color: white;
+    color:black;
+    padding-top: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0; 
+    --tw-border-opacity: 1;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.banner-visible {
+    transform: translateY(0);
+    transition: transform 0.3s;
+}
+.banner-hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s;
+}
+@media (max-width: 768px) {
+    .banner-visible,
+    .banner-hidden {
+        transform: translateY(0) !important;
+    }
+}
+.banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+}
+
+.banner-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 15px;
+}
+
+.banner-logo {
+    /* height: 50px; */
+    width: auto;
+}
+
+.banner-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.banner-right {
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+}
+/* .hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 24px;
+  margin-right: 20px;
+  color: rgb(76, 175, 80);
+} */
+
+/* Şifre input alanı için wrapper */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Şifreyi göster/gizle ikonu */
+.password-toggle-icon {
+  position: relative;
+  right: 36px;
+  cursor: pointer;
+  font-size: 18px;
+  color:rgb(189 175 175);
+  transition: color 0.3s ease;
+}
+
+.password-toggle-icon:hover {
+  color: #dacfcf;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.welcome-text {
+    font-size: 1rem;
+    color: black;
+    padding-top: 8px;
+}
+
+.logout-button {
+    /* background-color: #d9e1dd; */
+    color: black;
+    border: 1px solid white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.logout-button:hover {
+    /* background-color: rgba(255, 255, 255, 0.3); */
+    background-color:#c61d35;
+    color:white;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.login-link,
+.register-link {
+    background-color: #F2F5F5;
+    border: 1px solid white;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.login-link:hover,
+.register-link:hover {
+    background-color: #00847E;
+    /* background-color:#003da6; */
+} 
+
+/* Mobil görünüm için düzenleme */
+@media (max-width: 768px) {
+    .banner {
+        left: 200px; /* Mobilde daha dar sidebar */
+        position: unset;
+    }
+
+    .banner-content {
+        /* flex-direction: column; */
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .banner-right {
+        margin-top: 1rem;
+    }
+
+    .user-info {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .password-toggle-icon{
+        position:absolute;
+        padding-top: 30px;
+        right: 86px;
+    }
+}

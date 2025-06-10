@@ -1,0 +1,185 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Helmet} from 'react-helmet-async';
+
+import Breadcrumbs from '../public/Breadcrumbs';
+import CCarousel from '../htmlComponent/CCarousel';
+import '../../css/HomePage.css';
+import '../../css/Projects.css';
+
+const ProjectDetail = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const projectData = location.state?.projectData;
+    
+    const [formData, setFormData] = useState({
+            name: '',
+            category: '',
+            description: '',
+            price: '',
+            stockQuantity: '',
+            typeofActivityId: null
+
+        });
+        const [imagePreviews, setImagePreviews] = useState([]);
+    
+    useEffect(() => {
+
+        if (projectData) {
+            setFormData({
+                name: projectData.name || '',
+                typeofActivityId:projectData.typeofActivityId || null,
+                statusType: projectData.statusType || '',
+                description: projectData.description || '',
+                projectCost: projectData.projectCost ? projectData.projectCost.toString() : '',
+                startDate: projectData.startDate ? projectData.startDate.toString() : '',
+                endDate: projectData.endDate ? projectData.endDate.toString() : '',
+                imageUrls: projectData.imageUrls || '' 
+            });
+
+            if (projectData.imageUrls && projectData.imageUrls.length > 0) {
+                setImagePreviews(projectData.imageUrls.map(url => `http://localhost:5001${url}`)); // Resim önizlemelerini ayarlıyoruz
+            }
+        } else {
+            console.log('No product data, resetting form'); // Debug için
+            setFormData({
+                name: '',
+                typeofActivityId: null,
+                statusType: '',
+                description: '',
+                projectCost: '',
+                startDate: '',
+                endDate: '',
+                imageUrls: []
+            });
+            setImagePreviews([]);
+        }
+    }, [projectData]);
+    
+    
+    const pathnames = [
+        {
+          path: 'Projeler',
+          link: -1,
+        },
+        {
+          path: 'Proje Detayları',
+          link: '',
+        }
+    ];
+
+    return (
+        <>
+            <Helmet>
+                <title>{projectData?.name ? `${projectData.name} | Aksa İnşaat` : 'Proje Detayı | Aksa İnşaat'}</title>
+                <meta
+                    name="description"
+                    content={
+                    projectData
+                        ? (projectData.description
+                            ? projectData.description.substring(0, 160)
+                            : "Proje detaylarını inceleyin.")
+                        : "Proje detaylarını inceleyin."
+                    }
+                />
+                <meta property="og:title" content={projectData?.name || "Proje Detayı"} />
+                <meta property="og:description" content={projectData?.description?.substring(0, 160) || "Proje detaylarını inceleyin."} />
+                </Helmet>   
+            
+            <div className="home-container">
+                <div className="main-content">
+                    <Breadcrumbs breadcrumbs={pathnames} />
+                    <div className="page-header">
+                        {/* <h1 className='headerClass'><i class="fa-solid fa-circle-info"></i> Proje Detay</h1>  */}
+                    </div>                   
+                    <hr></hr>
+                    <br></br>
+                    <div className="features-section">
+                        <div>
+                            <div className="row">
+                                
+                                <div className="col-12"> 
+                                    <div className="form-group">
+                                        <label htmlFor="name">Proje Adı</label>
+                                        <label className='justifyLabel' id="name" name="name"> {formData.name}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            {formData.typeofActivityId && formData.typeofActivityId.name &&
+                            <div className="row">
+                                
+                                <div className="col-12"> 
+                                    <div className="form-group">
+                                        <label htmlFor="name">Faaliyet Alanı</label>
+                                        <label className='justifyLabel' id="name" name="name"> {formData.typeofActivityId?.name}</label>
+                                    </div>
+                                </div>
+                            </div>}
+                            <div className="row">
+                                {formData.isVisibleCost && (
+                                <div className="col-6">
+                                    <div className="form-group">
+                                        <label htmlFor="projectCost">Maliyeti (₺)</label>
+                                        <label className='justifyLabel' id="projectCost"name="projectCost">{formData.projectCost}</label>
+                                    </div>
+                                </div>
+                                )}
+                                <div className="col-6">
+                                    <div className="form-group">
+                                        <label htmlFor="statusType">Proje Aktif mi?</label>
+                                        <label className='justifyLabel' id="statusType" name="statusType">{formData.statusType == 'true' ? 'Evet':'Hayır'}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-6">
+                                    <div className="form-group">
+                                        <label htmlFor="startDate">Başlama Tarihi</label>
+                                        <label className='justifyLabel' id="startDate" name="startDate">{new Date(formData.startDate).toLocaleDateString()}</label>
+                                    </div>
+                                </div>
+                                <div className="col-6">
+                                    {formData.statusType == 'false' && formData.endDate && (
+                                        <div className="form-group">
+                                            <label htmlFor="endDate">Bitiş Tarihi</label>
+                                            <label className='justifyLabel' id="endDate" name="endDate">{new Date(formData.endDate).toLocaleDateString()}</label>
+                                        </div>
+                                    )}                                 
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12">
+                                    <div className="form-group">
+                                        <label htmlFor="description">Açıklama</label>
+                                        <label className='justifyLabel'
+                                            id="description"
+                                            name="description"
+                                        >{formData.description}
+                                        
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">                              
+                                <div className="col-12">
+                                    <div className="form-group">
+                                        <div className="avatar-options">
+                                            <div className="upload-section">    
+                                                {imagePreviews && imagePreviews.length > 0 && (
+                                                    <CCarousel imageList={imagePreviews} />
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div> 
+                    </div>
+                </div>
+                
+            </div>
+        </>
+    );
+};
+
+export default ProjectDetail;
