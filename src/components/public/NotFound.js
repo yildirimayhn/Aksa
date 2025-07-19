@@ -7,11 +7,11 @@ const NotFound = () => {
    return (
          <>
              <Helmet>
-                 <title>404 | Medihant</title>
-                 <meta name="description" content="Medihant tarafından geliştirilen tüm projeleri burada bulabilirsiniz." />
-                 <meta name="keywords" content="projeler, yazılım, medihant, hantsoft, react" />
+                 <title>404 | Aksa İnşaat</title>
+                 <meta name="description" content="Aksa İnşaat tarafından geliştirilen tüm projeleri burada bulabilirsiniz." />
+                 <meta name="keywords" content="projeler, yazılım, Aksa İnşaat, react" />
                  <meta property="og:title" content="Projelerimiz" />
-                 <meta property="og:description" content="Medihant'ın geliştirdiği projeler hakkında detaylı bilgi alın." />
+                 <meta property="og:description" content="Aksa İnşaat'ın geliştirdiği projeler hakkında detaylı bilgi alın." />
              </Helmet>
          
              <div className="home-container">

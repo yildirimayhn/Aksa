@@ -2299,7 +2299,7 @@ video {
   overflow: hidden;
   border-radius: 0.75rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+  background-color: #003da6;
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -2324,7 +2324,7 @@ video {
   width: 100%;
   border-radius: 0px;
   --tw-bg-opacity: 1;
-  background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+  background-color: #003da6;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 1rem;
@@ -2397,9 +2397,9 @@ video {
   animation: spin 1s linear infinite;
 }.modal .form-content .form-field input {
   --tw-bg-opacity: 1;
-  background-color: rgb(63 63 70 / var(--tw-bg-opacity));
+  background-color: white;
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: black;
 }.modal .form-content .form-field textarea {
   --tw-bg-opacity: 1;
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
@@ -2567,7 +2567,8 @@ video {
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   --tw-bg-opacity: 1;
-  background-color: rgb(39 39 42 / var(--tw-bg-opacity));
+  /* background-color: rgb(39 39 42 / var(--tw-bg-opacity)); */
+  background-color: #003da6;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   font-size: 0.75rem;

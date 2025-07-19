@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { Helmet} from 'react-helmet-async';
 
 import Breadcrumbs from '../public/Breadcrumbs';
+import CHelmet from '../htmlComponent/CHelmet';
 import CCarousel from '../htmlComponent/CCarousel';
 import '../../css/HomePage.css';
 import '../../css/Projects.css';
@@ -68,24 +69,18 @@ const ProjectDetail = () => {
         }
     ];
 
-    return (
-        <>
-            <Helmet>
-                <title>{projectData?.name ? `${projectData.name} | Aksa İnşaat` : 'Proje Detayı | Aksa İnşaat'}</title>
-                <meta
-                    name="description"
-                    content={
-                    projectData
+    const pageName = projectData?.name || 'Proje Detayları';
+    const content = projectData
                         ? (projectData.description
                             ? projectData.description.substring(0, 160)
                             : "Proje detaylarını inceleyin.")
-                        : "Proje detaylarını inceleyin."
-                    }
-                />
-                <meta property="og:title" content={projectData?.name || "Proje Detayı"} />
-                <meta property="og:description" content={projectData?.description || "Proje detaylarını inceleyin."} />
-                </Helmet>   
-            
+                        : "Proje detaylarını inceleyin.";
+
+    const categoryName = projectData?.typeofActivityId?.name || '';  
+
+    return (
+        <>
+            <CHelmet pageName={pageName} content={content} categoryName={categoryName} />
             <div className="home-container">
                 <div className="main-content">
                     <Breadcrumbs breadcrumbs={pathnames} />
@@ -97,15 +92,24 @@ const ProjectDetail = () => {
                     <div className="features-section">
                         <div>
                             <div className="row">
-                                
                                 <div className="col-12"> 
+                                    <div className="form-group">
+                                        {/* <label htmlFor="name">Proje Adı</label> */}
+                                        <label className='justifyLabel' id="name" name="name"> {formData.name} , 
+                                            {formData.typeofActivityId?.name} , {formData.isVisibleCost && formData.projectCost} 
+                                            {new Date(formData.startDate).toLocaleDateString()}
+                                            {formData.statusType === 'false' && formData.endDate && ` - ${new Date(formData.endDate).toLocaleDateString()}`}
+                                        </label>
+                                    </div>
+                                </div>
+                                {/* <div className="col-12"> 
                                     <div className="form-group">
                                         <label htmlFor="name">Proje Adı</label>
                                         <label className='justifyLabel' id="name" name="name"> {formData.name}</label>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
-                            {formData.typeofActivityId && formData.typeofActivityId.name &&
+                            {/* {formData.typeofActivityId && formData.typeofActivityId.name &&
                             <div className="row">
                                 
                                 <div className="col-12"> 
@@ -114,8 +118,8 @@ const ProjectDetail = () => {
                                         <label className='justifyLabel' id="name" name="name"> {formData.typeofActivityId?.name}</label>
                                     </div>
                                 </div>
-                            </div>}
-                            <div className="row">
+                            </div>} */}
+                            {/* <div className="row">
                                 {formData.isVisibleCost && (
                                 <div className="col-6">
                                     <div className="form-group">
@@ -124,8 +128,8 @@ const ProjectDetail = () => {
                                     </div>
                                 </div>
                                 )}
-                            </div>
-                            <div className="row">
+                            </div> */}
+                            {/* <div className="row">
                                 <div className="col-6">
                                     <div className="form-group">
                                         <label htmlFor="startDate">Başlama Tarihi</label>
@@ -140,11 +144,11 @@ const ProjectDetail = () => {
                                         </div>
                                     )}                                 
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="row">
                                 <div className="col-12">
                                     <div className="form-group">
-                                        <label htmlFor="description">Açıklama</label>
+                                        {/* <label htmlFor="description">Açıklama</label> */}
                                         <div id="description" name="description">
                                             <div dangerouslySetInnerHTML={{ __html: formData.description }} />
                                         </div>

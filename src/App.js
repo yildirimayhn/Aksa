@@ -49,7 +49,6 @@ import ResetPassword from './components/public/ResetPassword';
  
 import SocialMediaFloatingBar from './components/htmlComponent/SocialMediaFloatingBar';
 import Profile from './components/htmlComponent/Profile';  
-import Notifications from './components/htmlComponent/Notifications';
 
 
 // #endregion
@@ -113,7 +112,6 @@ function App() {
             <Route path="/user-activated/:activatedToken" element={<ResetPassword />} />
             
             <Route path="/profile" element={<Profile />} />
-            <Route path="/notifications" element={<Notifications />} />
 
             <Route path="/test" element={<div>Test Çalışıyor</div>} />
 

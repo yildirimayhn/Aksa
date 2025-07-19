@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Helmet} from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import Breadcrumbs from './Breadcrumbs';
+import CHelmet from '../htmlComponent/CHelmet';
 import { useApiCall } from '../../utils/apiCalls';
-
 import {substringValue} from '../../utils/utils';
 
 const HomePage = () => {
@@ -41,14 +41,7 @@ const HomePage = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Projeler | Aksa İnşaat</title>
-                <meta name="description" content="Aksa inşaat tarafından geliştirilen tüm projeleri burada bulabilirsiniz." />
-                <meta name="keywords" content="projeler, inşaat, doğalgaz," />
-                <meta property="og:title" content="Projelerimiz" />
-                <meta property="og:description" content="Aksa inşaat'ın geliştirdiği projeler hakkında detaylı bilgi alın." />
-            </Helmet>
-        
+            <CHelmet pageName="Projelerimiz" projectName="İnşaat projeleri, doğalgaz" categoryName="boru hattı" />
             <div className="home-container">
                 <div className="main-content">
                     <Breadcrumbs breadcrumbs={pathnames} />

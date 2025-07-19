@@ -16,10 +16,10 @@ const Breadcrumbs = () => {
                 return 'Şifremi Sıfırla';
             case 'profile':
                 return 'Profil';
-            case 'reservations':
-                return 'Rezervasyonlar';  
-            case 'attendedEvents':
-                return 'Katıldığım Etkinlikler';   
+            // case 'reservations':
+            //     return 'Rezervasyonlar';  
+            // case 'attendedEvents':
+            //     return 'Katıldığım Etkinlikler';   
             case 'favorites':
                 return 'Favorilerim';
             case 'notifications':{
@@ -29,16 +29,17 @@ const Breadcrumbs = () => {
                 return 'Yeni';
             case 'edit':
                 return 'Güncelle';
-            case 'products':
-                return 'Ürünler';
-            case 'product':
-                return 'Ürün';
-            case 'editProduct':
-                return 'Güncelle';
-            case 'addProduct':
-                return 'Yeni';
-            case 'product-detail':
-                return 'Ürün Detayı';
+            // case 'products':
+            //     return 'Ürünler';
+            // case 'product':
+            //     return 'Ürün';
+            // case 'editProduct':
+            //     return 'Güncelle';
+            // case 'addProduct':
+            //     return 'Yeni';
+            // case 'product-detail':
+            //     return 'Ürün detayı';
+
             case 'activities':
                 return 'Faaliyetlerimiz';
             case 'projects':
@@ -52,9 +53,9 @@ const Breadcrumbs = () => {
             case 'addProject':
                 return 'Yeni';
             case 'project-detail':
-                return 'Proje Detayı';                
-            case 'cart':
-                return 'Sepetim';                
+                return 'Proje detayı';                
+            // case 'cart':
+            //     return 'Sepetim';                
 
             case 'references':
                 return 'Referanslar';
@@ -101,6 +102,7 @@ const Breadcrumbs = () => {
                 return 'Gizlilik Politikası';
             case 'privacypolicies':
                 return 'Gizlilik Politikaları';
+
             case 'categories':
                 return 'Kategoriler';
             case 'category':
@@ -127,13 +129,14 @@ const Breadcrumbs = () => {
                 return 'Güncelle';
             case 'addUser':
                 return 'Yeni';
+
             case 'languages':
                 return 'Diller';
             case 'translations':
                 return 'Çeviriler';
             
-            case 'orders':
-                return 'Siparişler';   
+            // case 'orders':
+            //     return 'Siparişler';   
             case 'locations':
                 return 'Adresler';
             default:

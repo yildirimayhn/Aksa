@@ -44,7 +44,7 @@ const Projects = () => {
             <Helmet>
                 <title>Projeler | Aksa İnşaat</title>
                 <meta name="description" content="Aksa inşaat tarafından geliştirilen tüm projeleri burada bulabilirsiniz." />
-                <meta name="keywords" content="projeler, inşaat, doğalgaz," />
+                <meta name="keywords" content="projeler, inşaat, doğalgaz, faaliyetler, Ankara, İzmir,İstanbul, Bingöl, Kocaeli, iller, belediye, bakanlık" />
                 <meta property="og:title" content="Projelerimiz" />
                 <meta property="og:description" content="Aksa inşaat'ın geliştirdiği projeler hakkında detaylı bilgi alın." />
             </Helmet>

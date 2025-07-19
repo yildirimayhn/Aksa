@@ -558,4 +558,9 @@ input, button {
 .ql-container {
   min-height: 300px;
 }
-
+.empty-data {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  margin-top: 50px;
+}

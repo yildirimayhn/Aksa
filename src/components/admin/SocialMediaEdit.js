@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import Breadcrumbs from '../public/Breadcrumbs';
-import '../../css/NewProduct.css';
 import { Checkbox } from '@mui/material';
 import { apiUrl } from '../../utils/utils';
 
@@ -83,7 +82,7 @@ const [form, setForm] = useState({ name: '', mediaLink: '', active: true });
         <div className="home-container">
             <div className="main-content">
                 <Breadcrumbs breadcrumbs={pathnames} />
-                <form id="dataForm" onSubmit={handleSubmit} className="new-product-form">
+                <form id="dataForm" onSubmit={handleSubmit} className="edit-form">
                     <div className="page-header">
                         {/* <h1 className='headerClass'>{id ? 'Düzenle' : 'Yeni Hesap Ekle'}</h1> */}
                         <div className="form-actions">

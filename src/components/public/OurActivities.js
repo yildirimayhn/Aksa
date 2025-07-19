@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import Breadcrumbs from './Breadcrumbs';
+import CHelmet from '../htmlComponent/CHelmet';
 
 import {substringValue, apiUrl} from '../../utils/utils';
 
@@ -80,6 +82,8 @@ const OurActivities = () => {
     }];
     
     return (
+        <>
+        <CHelmet pageName="Faaliyetlerimiz" content={categoryName} categoryName={categoryName} />
         <div className="home-container">
             <div className="main-content">
                 <Breadcrumbs breadcrumbs={pathnames} />
@@ -109,7 +113,7 @@ const OurActivities = () => {
                 <br></br>
                 <div className="projects-grid">
                     {projects.length === 0 && (
-                        <div className="no-projects-message"> 
+                        <div className="empty-data"> 
                             {categoryName ? `${categoryName} kategorisine ait proje bulunamadı.` : 'Proje bulunamadı.'  }
                         </div>
                     )}
@@ -145,6 +149,7 @@ const OurActivities = () => {
                 </div>
             </div> 
         </div>
+        </>
     );
 };
 

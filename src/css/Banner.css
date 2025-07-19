@@ -135,6 +135,7 @@
 .login-link:hover,
 .register-link:hover {
     background-color:#003da6;
+    color: white;
 } 
 
 /* Mobil görünüm için düzenleme */

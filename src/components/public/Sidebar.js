@@ -48,9 +48,7 @@ const Sidebar = () => {
                             <i class="fa fa-caret-down"></i>
                         </button>
                         <div class="dropdown-content">
-                            {/* <a onClick={() => handleMenuClick('/event-list')}>Etkinlikler</a> */}
                             <a onClick={() => handleMenuClick('/users')}>Kullanıcılar</a>
-                            {/* <a onClick={() => handleMenuClick('/products')} >Ürünler</a> */}
                             <a onClick={() => handleMenuClick('/projects')} >Projeler</a>
                             <a onClick={() => handleMenuClick('/categories')}>Kategoriler</a>
                             <a onClick={() => handleMenuClick('/references')} >Referanslar</a>
@@ -64,7 +62,6 @@ const Sidebar = () => {
                 ) : <div></div>
             }
             <a onClick={() => handleMenuClick('/')}>Anasayfa</a>
-            {/* <a onClick={() => handleMenuClick('/projects')}>Projeler</a> */}
             {categories.length > 0 && 
             
                 <div class="dropdown">
@@ -81,8 +78,6 @@ const Sidebar = () => {
                 </div>
             }
             
-            {/* <a onClick={() => handleMenuClick('/events')}>Etkinlikler</a> */}
-            {/* <a onClick={() => handleMenuClick('/product')}>Ürünler</a> */}
             <a onClick={() => handleMenuClick('/about')}>Biz Kimiz</a>
             <a onClick={() => handleMenuClick('/contact')} >İletişim</a>
         </div>

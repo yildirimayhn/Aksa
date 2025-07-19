@@ -102,6 +102,8 @@ label #menu:hover {
     background-color:#003da6;
     color: white;
     cursor: pointer;
+    border: 1px solid;
+    border-radius: 8px;
 }
 .navbarlogo{
     padding-left: 26px;
@@ -159,6 +161,8 @@ label #menu:hover {
 .dropdown-content a:hover {
     color: white; 
     background-color:#003da6;
+    border: 1px solid;
+    border-radius: 8px;
 }
 
 .dropdown:hover .dropdown-content {
@@ -168,6 +172,8 @@ label #menu:hover {
 .dropdown:hover .dropbtn {
     background-color:#003da6;
     color: white;
+    border: 1px solid;
+    border-radius: 8px;
 }
 
 /* menu end */
