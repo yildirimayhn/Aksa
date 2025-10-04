@@ -1,1 +1,2 @@
-Diş hekimlerinin kullandığı ürünlere yönelik React Native ile bir web sitesi uygulaması
+İnşaat firması için React ile hazırlanan bir web sitesi uygulaması
+
